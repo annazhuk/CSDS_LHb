@@ -1,0 +1,4 @@
+Download data (BL6Pre_data) from figshare and place it in the same folder as the .m files. 
+Run run_plots_visits_new_cohort1.m, then run_plots_visits_new_cohort2.m, then Pool_visits_BL6Pre.m. 
+
+
