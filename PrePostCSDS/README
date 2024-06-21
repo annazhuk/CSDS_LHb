@@ -1,3 +1,6 @@
 Download data from figshare and place it in the same folder as the .m file
 defeat_LHb_fig_paper creates the figure panels from Fig 1, 2, and part of Fig 5. 
 supp_fig creates the figure panels from Fig S1, and S2.  
+
+You will additionally need to download the code for shadedErrorBar (https://www.mathworks.com/matlabcentral/fileexchange/26311-raacampbell-shadederrorbar)
+and rgb (https://www.mathworks.com/matlabcentral/fileexchange/24497-rgb-triple-of-color-name-version-2?s_tid=srchtitle). 
