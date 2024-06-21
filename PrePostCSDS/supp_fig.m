@@ -227,14 +227,16 @@ end
 for xc = 1
 clear
 load('example_shuffles_plot.mat')
-% m569
+% % m569 % numcell = 5
 figure('DefaultAxesFontSize',12)
 pos8 = [0.2 0.54 0.3 0.1];
 subplot('Position',pos8)
-numcell = 5; 
-time_len = size(C_raw_shuffles,2);
+% numcell = 5; 
+%time_len = size(C_raw_shuffles,2);
+time_len = length(C_raw_shuffles_adj);
 time_plot = 0:fps:time_len/fps;
-imagesc(squeeze(C_raw_shuffles(numcell,:,1:10))')
+%imagesc(squeeze(C_raw_shuffles(numcell,:,1:10))')
+imagesc(C_raw_shuffles_adj')
 colorbar
 clim([-2 2])
 a=colorbar;
@@ -252,16 +254,18 @@ for xc = 1
 clear
 load('example_cell_sig_shuffles.mat')
 
-numcell = 5; %m569
+% %numcell = 5; %m569
 time_plot = -2:2:5;
 figure('DefaultAxesFontSize',12)
 pos8 = [0.2 0.54 0.05 0.1];
 subplot('Position',pos8)
 for s = 1:100%size(C_raw_shuffles,3)
-    plot(squeeze(avg_start_shuffle_all(numcell,:,s)),'Color',[.7 .7 .7],'LineWidth',0.25)
+    %plot(squeeze(avg_start_shuffle_all(numcell,:,s)),'Color',[.7 .7 .7],'LineWidth',0.25)
+    plot(avg_start_shuffle_all_adj(:,s),'Color',[.7 .7 .7],'LineWidth',0.25)
     hold on
 end
-plot(avg_start_all(numcell,:),'r','LineWidth',1)
+%plot(avg_start_all(numcell,:),'r','LineWidth',1)
+plot(avg_start_all_adj,'r','LineWidth',1)
 plot([60,60],[-2.5 4.5],'k--','linewidth',1)
 xlim([0 210])
 ylim([-2 2.5])
