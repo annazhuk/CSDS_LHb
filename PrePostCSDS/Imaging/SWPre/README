@@ -1,0 +1,2 @@
+Download data (SWPre_im_data) from figshare and place it in the same folder as all the .m files.
+Run run_plots_visit_cells_NEW.m first, then run_peaks_baseline_cells.m, then run_correlations_S. 
