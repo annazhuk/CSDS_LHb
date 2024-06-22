@@ -6,7 +6,7 @@ Each row of the matrix is a mouse, with time along the columns.
 There are separate structs for susceptible and resilient mice and pre- and post-CSDS.
 
 Fig2_imaging.mat is similarly organized with an added level as it contains single cell data. 
-Each row of cells is a mouse, and inside the cell is a matrix of cell x time (aligned to social zone entry).
+Each row of cells is a mouse, and inside the cell is a matrix of neuron x time (aligned to social zone entry).
 
 defeat_LHb_fig_paper.m creates the figure panels from Fig 1, 2, and part of Fig 5. 
 
