@@ -1,6 +1,6 @@
 Create python environment to run these jupyter notebooks using paper_conda_requirements.txt.
 
-Download the data from figshare and put it in the same folder as the notebooks. Most data files are dictionaries. 
+Download the data from figshare and put it in the same folder as the notebooks. Most data files are dictionaries with each corresponding to a mouse and defeat day. 
 
 Run defeat_analysis_paper.ipynb first. 
 
