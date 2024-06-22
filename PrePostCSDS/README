@@ -1,8 +1,15 @@
-Download data from figshare and place it in the same folder as the .m file
+Download data from figshare and place it in the same folder as the .m files.
 
-defeat_LHb_fig_paper creates the figure panels from Fig 1, 2, and part of Fig 5. 
+Fig2_FP.mat contains structs that are have fields organized in rows of mice by mouse number, which is indicated in the field "mouse" or "mice." 
+The rest of the fields contain matrices of neural data aligned to entry into the social zone (with the social target indicated by the name of the struct eg SWcsds_all_post). 
+Each row of the matrix is a mouse, with time along the columns. 
+There are separate structs for susceptible and resilient mice and pre- and post-CSDS.
 
-supp_fig creates the figure panels from Fig S1, and S2. 
+Fig2_imaging.mat is similarly organized with an added level as it contains single cell data. Each row of cells is a mouse, and inside the cell is a matrix of cell x time (aligned to social zone entry).
+
+defeat_LHb_fig_paper.m creates the figure panels from Fig 1, 2, and part of Fig 5. 
+
+supp_fig.m creates the figure panels from Fig S1, and S2. 
 
 You will additionally need to download the code for shadedErrorBar (https://www.mathworks.com/matlabcentral/fileexchange/26311-raacampbell-shadederrorbar)
 and rgb (https://www.mathworks.com/matlabcentral/fileexchange/24497-rgb-triple-of-color-name-version-2?s_tid=srchtitle). 
