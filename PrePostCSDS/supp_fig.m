@@ -2,148 +2,7 @@
 green = [.1367,.5625,.4102];%[.4 .7 .15];
 purple = [.4921,.4063,.6797];%[.5 0 .9];
 
-%% Fig S1A: HC correlations control
-for xc = 1
-clear 
-load('homecage_behavior.mat')
-figure('DefaultAxesFontSize',20)
-pos5 = [0.87 0.6 0.05 0.1];
-subplot('Position',pos5)
-sz = 30;
-% fit line to data
-A = HC_CTRL_SI;
-B = HC_CTRL_SW;
-mdl = fitlm(A,B,'linear');
-h = plot(mdl);
-hold on
-% Get handles to plot components
-dataHandle = findobj(h,'DisplayName','Data');
-fitHandle = findobj(h,'DisplayName','Fit');
-cbHandles = findobj(h,'DisplayName','Confidence bounds');
-cbHandles = findobj(h,'LineStyle',cbHandles.LineStyle, 'Color', cbHandles.Color);
-dataHandle.Color = 'w'; 
-fitHandle.Color = 'k';
-fitHandle.LineWidth = 1;
-fitHandle.LineStyle = '--';
-set(cbHandles, 'Color', 'k', 'LineWidth', 1,'LineStyle','-')
-scatter(HC_CTRL_SI,HC_CTRL_SW,sz,'filled','MarkerEdgeColor','k','MarkerEdgeAlpha',1,'MarkerFaceColor','k','MarkerFaceAlpha',.2)
-xlabel('S       SI Time (%)     R')
-ylabel('% time investigating')
-title('HC SW') %,'FontSize',20)
-xlim([20 85])
-ylim([-10 100])
-box off
-end
-
-%% Fig S1B: EPM control correlation
-for xc = 1
-clear
-load('EPM_susVScontrol_stress.mat')
-figure('DefaultAxesFontSize',12)
-pos3 = [0.35 0.88 0.05 0.1];
-subplot('Position',pos3)
-
-green = [.1367,.5625,.4102];%[.4 .7 .15];
-purple = [.4921,.4063,.6797];%[.5 0 .9];
-
-% fit line to data
-sz = 30;
-A = opencenter_control_SI;
-B = opensum_control;
-mdl = fitlm(A,B,'linear');
-h = plot(mdl);
-hold on
-% Get handles to plot components
-dataHandle = findobj(h,'DisplayName','Data');
-fitHandle = findobj(h,'DisplayName','Fit');
-cbHandles = findobj(h,'DisplayName','Confidence bounds');
-cbHandles = findobj(h,'LineStyle',cbHandles.LineStyle, 'Color', cbHandles.Color);
-dataHandle.Color = 'w'; 
-fitHandle.Color = 'k';
-fitHandle.LineWidth = 1;
-fitHandle.LineStyle = '--';
-set(cbHandles, 'Color', 'k', 'LineWidth', 1,'LineStyle','-')
-scatter(opencenter_control_SI,opensum_control,sz,'filled','MarkerEdgeColor','k','MarkerEdgeAlpha',1,'MarkerFaceColor','k','MarkerFaceAlpha',.2)
-xlabel('SI Time (%)')
-ylabel({'% time spent';'in open arms'})
-title('EPM') %,'FontSize',20)
-xlim([35 75])
-ylim([-5 40])
-box off
-end
-
-%% Fig S1C: NSF control correlation
-for xc = 1
-clear
-load('NSF_susVcontrol_stress.mat')
-figure('DefaultAxesFontSize',12)
-pos3 = [0.35 0.88 0.05 0.1];
-subplot('Position',pos3)
-
-green = [.1367,.5625,.4102];%[.4 .7 .15];
-purple = [.4921,.4063,.6797];%[.5 0 .9];
-
-% fit line to data
-sz = 30;
-A = NSF_control_SI;
-B = NSF_control;
-mdl = fitlm(A,B,'linear');
-h = plot(mdl);
-hold on
-% Get handles to plot components
-dataHandle = findobj(h,'DisplayName','Data');
-fitHandle = findobj(h,'DisplayName','Fit');
-cbHandles = findobj(h,'DisplayName','Confidence bounds');
-cbHandles = findobj(h,'LineStyle',cbHandles.LineStyle, 'Color', cbHandles.Color);
-dataHandle.Color = 'w'; 
-fitHandle.Color = 'k';
-fitHandle.LineWidth = 1;
-fitHandle.LineStyle = '--';
-set(cbHandles, 'Color', 'k', 'LineWidth', 1,'LineStyle','-')
-scatter(NSF_control_SI,NSF_control,sz,'filled','MarkerEdgeColor','k','MarkerEdgeAlpha',1,'MarkerFaceColor','k','MarkerFaceAlpha',.2)
-xlabel('SI Time (%)')
-ylabel('Latency to feed (s)')
-title('NSF') %,'FontSize',20)
-xlim([35 75])
-ylim([-70 650])
-box off
-end
-
-%% Fig S1D: Immobility control
-for xc = 1
-clear
-load('immobility_control.mat')
-figure('DefaultAxesFontSize',15)
-pos5 = [0.55 0.6 0.05 0.1];
-subplot('Position',pos5)
-
-% fit line to data
-A = cropped_CTRL_SI_all_wfos ;
-B = immobility_ctrl_all.velocity;
-mdl = fitlm(A,B,'linear');
-h = plot(mdl);
-hold on
-% Get handles to plot components
-dataHandle = findobj(h,'DisplayName','Data');
-fitHandle = findobj(h,'DisplayName','Fit');
-cbHandles = findobj(h,'DisplayName','Confidence bounds');
-cbHandles = findobj(h,'LineStyle',cbHandles.LineStyle, 'Color', cbHandles.Color);
-dataHandle.Color = 'w'; 
-fitHandle.Color = 'k';
-fitHandle.LineWidth = 1;
-fitHandle.LineStyle = '--';
-sz=30;
-set(cbHandles, 'Color', 'k', 'LineWidth', 1,'LineStyle','-')
-scatter(cropped_CTRL_SI_all_wfos,immobility_ctrl_all.velocity,sz,'filled','MarkerEdgeColor','k','MarkerEdgeAlpha',1,'MarkerFaceColor','k','MarkerFaceAlpha',.2)
-xlabel('S       SI Time (%)     R')
-ylabel({'% time spent';'immobile'})
-title('Chamber Exploration') %,'FontSize',20)
-xlim([20 85])
-ylim([-5 20])
-box off
-end
-
-%% Fig S1E: Immobility PRE correlation
+%% Fig S1A: Immobility PRE correlation
 for xc = 1
 clear
 load('immobility_PRE.mat')
@@ -183,6 +42,147 @@ xticks(0:40:100)
 yticks(0:20:100)
 xlim([-5 100])
 %ylim([-5 50])
+box off
+end
+
+%% Fig S1B: HC correlations control
+for xc = 1
+clear 
+load('homecage_behavior.mat')
+figure('DefaultAxesFontSize',20)
+pos5 = [0.87 0.6 0.05 0.1];
+subplot('Position',pos5)
+sz = 30;
+% fit line to data
+A = HC_CTRL_SI;
+B = HC_CTRL_SW;
+mdl = fitlm(A,B,'linear');
+h = plot(mdl);
+hold on
+% Get handles to plot components
+dataHandle = findobj(h,'DisplayName','Data');
+fitHandle = findobj(h,'DisplayName','Fit');
+cbHandles = findobj(h,'DisplayName','Confidence bounds');
+cbHandles = findobj(h,'LineStyle',cbHandles.LineStyle, 'Color', cbHandles.Color);
+dataHandle.Color = 'w'; 
+fitHandle.Color = 'k';
+fitHandle.LineWidth = 1;
+fitHandle.LineStyle = '--';
+set(cbHandles, 'Color', 'k', 'LineWidth', 1,'LineStyle','-')
+scatter(HC_CTRL_SI,HC_CTRL_SW,sz,'filled','MarkerEdgeColor','k','MarkerEdgeAlpha',1,'MarkerFaceColor','k','MarkerFaceAlpha',.2)
+xlabel('S       SI Time (%)     R')
+ylabel('% time investigating')
+title('HC SW') %,'FontSize',20)
+xlim([20 85])
+ylim([-10 100])
+box off
+end
+
+%% Fig S1C: EPM control correlation
+for xc = 1
+clear
+load('EPM_susVScontrol_stress.mat')
+figure('DefaultAxesFontSize',12)
+pos3 = [0.35 0.88 0.05 0.1];
+subplot('Position',pos3)
+
+green = [.1367,.5625,.4102];%[.4 .7 .15];
+purple = [.4921,.4063,.6797];%[.5 0 .9];
+
+% fit line to data
+sz = 30;
+A = opencenter_control_SI;
+B = opensum_control;
+mdl = fitlm(A,B,'linear');
+h = plot(mdl);
+hold on
+% Get handles to plot components
+dataHandle = findobj(h,'DisplayName','Data');
+fitHandle = findobj(h,'DisplayName','Fit');
+cbHandles = findobj(h,'DisplayName','Confidence bounds');
+cbHandles = findobj(h,'LineStyle',cbHandles.LineStyle, 'Color', cbHandles.Color);
+dataHandle.Color = 'w'; 
+fitHandle.Color = 'k';
+fitHandle.LineWidth = 1;
+fitHandle.LineStyle = '--';
+set(cbHandles, 'Color', 'k', 'LineWidth', 1,'LineStyle','-')
+scatter(opencenter_control_SI,opensum_control,sz,'filled','MarkerEdgeColor','k','MarkerEdgeAlpha',1,'MarkerFaceColor','k','MarkerFaceAlpha',.2)
+xlabel('SI Time (%)')
+ylabel({'% time spent';'in open arms'})
+title('EPM') %,'FontSize',20)
+xlim([35 75])
+ylim([-5 40])
+box off
+end
+
+%% Fig S1D: NSF control correlation
+for xc = 1
+clear
+load('NSF_susVcontrol_stress.mat')
+figure('DefaultAxesFontSize',12)
+pos3 = [0.35 0.88 0.05 0.1];
+subplot('Position',pos3)
+
+green = [.1367,.5625,.4102];%[.4 .7 .15];
+purple = [.4921,.4063,.6797];%[.5 0 .9];
+
+% fit line to data
+sz = 30;
+A = NSF_control_SI;
+B = NSF_control;
+mdl = fitlm(A,B,'linear');
+h = plot(mdl);
+hold on
+% Get handles to plot components
+dataHandle = findobj(h,'DisplayName','Data');
+fitHandle = findobj(h,'DisplayName','Fit');
+cbHandles = findobj(h,'DisplayName','Confidence bounds');
+cbHandles = findobj(h,'LineStyle',cbHandles.LineStyle, 'Color', cbHandles.Color);
+dataHandle.Color = 'w'; 
+fitHandle.Color = 'k';
+fitHandle.LineWidth = 1;
+fitHandle.LineStyle = '--';
+set(cbHandles, 'Color', 'k', 'LineWidth', 1,'LineStyle','-')
+scatter(NSF_control_SI,NSF_control,sz,'filled','MarkerEdgeColor','k','MarkerEdgeAlpha',1,'MarkerFaceColor','k','MarkerFaceAlpha',.2)
+xlabel('SI Time (%)')
+ylabel('Latency to feed (s)')
+title('NSF') %,'FontSize',20)
+xlim([35 75])
+ylim([-70 650])
+box off
+end
+
+%% Fig S1E: Immobility control
+for xc = 1
+clear
+load('immobility_control.mat')
+figure('DefaultAxesFontSize',15)
+pos5 = [0.55 0.6 0.05 0.1];
+subplot('Position',pos5)
+
+% fit line to data
+A = cropped_CTRL_SI_all_wfos ;
+B = immobility_ctrl_all.velocity;
+mdl = fitlm(A,B,'linear');
+h = plot(mdl);
+hold on
+% Get handles to plot components
+dataHandle = findobj(h,'DisplayName','Data');
+fitHandle = findobj(h,'DisplayName','Fit');
+cbHandles = findobj(h,'DisplayName','Confidence bounds');
+cbHandles = findobj(h,'LineStyle',cbHandles.LineStyle, 'Color', cbHandles.Color);
+dataHandle.Color = 'w'; 
+fitHandle.Color = 'k';
+fitHandle.LineWidth = 1;
+fitHandle.LineStyle = '--';
+sz=30;
+set(cbHandles, 'Color', 'k', 'LineWidth', 1,'LineStyle','-')
+scatter(cropped_CTRL_SI_all_wfos,immobility_ctrl_all.velocity,sz,'filled','MarkerEdgeColor','k','MarkerEdgeAlpha',1,'MarkerFaceColor','k','MarkerFaceAlpha',.2)
+xlabel('S       SI Time (%)     R')
+ylabel({'% time spent';'immobile'})
+title('Chamber Exploration') %,'FontSize',20)
+xlim([20 85])
+ylim([-5 20])
 box off
 end
 
